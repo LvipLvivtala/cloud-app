@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cloud-app
+  template:
+      metadata:
+        labels:
+          app: cloud-app
+      spec:
+        containers:
+        - name: cloud-app         # Имя вашего контейнера (оставьте ваше)
+          image: yeralkhan12/cloud-app:1.0 # Ваша docker-образ (оставьте ваш)
+          ports:
+          - containerPort: 5000   # Порт контейнера
+
+        # === ВСТАВЛЯЕТЕ ЭТОТ БЛОК НИЖЕ ПОРТОВ ===
+          resources:
+            requests:
+              cpu: "50m"          # Запрос процессора (сколько гарантированно выделяется)
+              memory: "64Mi"      # Запрос памяти
+            limits:
+              cpu: "200m"         # Лимит процессора (максимум, выше которого pod будет троттлится)
+              memory: "128Mi"     # Лимит памяти (при превышении pod получит OOMKilled)

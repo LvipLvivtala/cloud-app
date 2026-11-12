@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      DB_HOST: db
+      DB_NAME: cloudshop
+      DB_USER: clouduser
+      DB_PASSWORD: cloudpassword
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: cloudshop
+      POSTGRES_USER: clouduser
+      POSTGRES_PASSWORD: cloudpassword
