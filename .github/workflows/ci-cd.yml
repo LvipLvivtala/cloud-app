@@ -27,8 +27,8 @@ jobs:
       run: |
         pytest
 
-    - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/cloud-app:latest .
+- name: Build Docker image
+  run: docker build -t LvipLvivtala/cloud-app:latest .
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v3
@@ -36,8 +36,8 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-  - name: Push Docker image
-  run: docker push ${{ secrets.DOCKER_USERNAME }}/cloud-app:latest
+- name: Push Docker image
+  run: docker push LvipLvivtala/cloud-app:latest
 
 - name: Trigger Deployment
       run: |
