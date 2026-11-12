@@ -39,7 +39,7 @@ jobs:
 
     - name: Push Docker image
       run: |
-        docker push your-dockerhub-username/cloud-app:latest
+        docker push lviplvivtala/cloud-app:latest
 
     - name: Trigger Deployment
       run: |
