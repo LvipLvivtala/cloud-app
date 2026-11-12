@@ -36,10 +36,9 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Push Docker image
-      run: |
-        docker push lviplvivtala/cloud-app:latest
+  - name: Push Docker image
+  run: docker push ${{ secrets.DOCKER_USERNAME }}/cloud-app:latest
 
-    - name: Trigger Deployment
+- name: Trigger Deployment
       run: |
         echo "Deployment step completed successfully!"
